@@ -9,6 +9,7 @@ let currentUVEl = document.querySelector('#uv')
 
 let currentDate = moment().format('l');
 let baseURL = 'http://api.openweathermap.org/data/2.5/weather?appid=8bfd6df7338458aeaebd48fdcb483a00&units=imperial&q=';
+let fiveDayURL = ''
 
 var getWeatherData = function(city) {
     fetch(baseURL + city)
@@ -26,21 +27,24 @@ var getWeatherData = function(city) {
             currentHumidityEl.textContent = 'Humidity: ' + data.main.humidity + '%';
             let lat = data.coord.lat;
             let lon = data.coord.lon;
-            fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,daily,alerts&appid=8bfd6df7338458aeaebd48fdcb483a00&units=imperial`)
+            fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=8bfd6df7338458aeaebd48fdcb483a00&units=imperial&exclude=minutely,hourly,alerts`)
             .then(function(response) {
                 response.json()
                 .then(function(data) {
                     console.log(data);
                     let uvIndex = data.current.uvi;
                     currentUVEl.textContent = 'UV Index: ' + uvIndex;
-                    if (uvIndex <= 2) {
+                    if (uvIndex <= 3) {
                         currentUVEl.style.backgroundColor = 'green';
                     } else if (uvIndex <= 6) {
                         currentUVEl.style.backgroundColor = 'yellow';
-                    } else {
+                    } else if (uvIndex <=8) {
+                        currentUVEl.style.backgroundColor = 'orange';
+                    } else if (uvIndex <= 11) {
                         currentUVEl.style.backgroundColor = 'red';
-                    }
-                    ;
+                    } else {
+                        currentUVEl.style.backgroundColor = 'purple';
+                    };
                 })
             })
         })

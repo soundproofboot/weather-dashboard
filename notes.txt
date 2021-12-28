@@ -33,3 +33,22 @@ humidity
 
 http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=8bfd6df7338458aeaebd48fdcb483a00
 
+uv index
+0 to 2 - low, green
+3 to 5 - moderate, yellow
+6 to 7 - high, orange
+
+how to make the cards
+since each day is stored as an index of an array, make a for loop starting at index 1 and ending at index 5
+make a container to put the stuff in
+make an element for each piece of data I need to have in each card
+attach data to el
+attach those els to container
+attach container to fiveDay container
+
+data I need for cards
+Date (find out how to add i to moment)
+Icon (data.daily[i].weather[0].icon put into url for png)
+Temp (data.daily[i].temp.day + deg f)
+Wind (data.daily[i].wind_speed + mph)
+Humidity (data.daily[i].humidity + %)
