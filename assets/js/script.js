@@ -31,6 +31,16 @@ var getWeatherData = function(city) {
                 response.json()
                 .then(function(data) {
                     console.log(data);
+                    let uvIndex = data.current.uvi;
+                    currentUVEl.textContent = 'UV Index: ' + uvIndex;
+                    if (uvIndex <= 2) {
+                        currentUVEl.style.backgroundColor = 'green';
+                    } else if (uvIndex <= 6) {
+                        currentUVEl.style.backgroundColor = 'yellow';
+                    } else {
+                        currentUVEl.style.backgroundColor = 'red';
+                    }
+                    ;
                 })
             })
         })
