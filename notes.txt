@@ -1,0 +1,31 @@
+header full width
+
+main in two columns
+
+first column 1/4
+h2 search for city
+form
+input field
+submit button
+/form
+border bottom
+
+use javascript to populate area below with buttons for each city that has been search. On click they will request api for that city. Save those cities in local storage.
+
+second column 3/4 full border
+first row
+full width section with current info
+heading city (date in parentheses)
+temp
+wind
+humidity
+uv
+
+second row
+heading 5-day forecast
+5 cards wide
+date
+img
+temp
+wind
+humidity
