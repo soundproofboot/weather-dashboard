@@ -10,9 +10,10 @@ let currentHumidityEl = document.querySelector('#humidity')
 let currentUVEl = document.querySelector('#uv');
 let fiveDay = document.querySelector('.five-day');
 let searchHistoryEl = document.querySelector('.search-history');
+let fiveDayHeaderEl = document.querySelector('#five-day-header');
 
 let currentDate = moment().format('l');
-let baseURL = 'http://api.openweathermap.org/data/2.5/weather?appid=8bfd6df7338458aeaebd48fdcb483a00&units=imperial&q=';
+let baseURL = 'https://api.openweathermap.org/data/2.5/weather?appid=8bfd6df7338458aeaebd48fdcb483a00&units=imperial&q=';
 let fiveDayURL = ''
 
 if (!localStorage.cities) {
@@ -35,7 +36,7 @@ var getWeatherData = function(city) {
             }
             let iconURL = data.weather[0].icon
             let iconEl = document.createElement('img');
-            iconEl.setAttribute('src', 'http://openweathermap.org/img/wn/' + iconURL + '@2x.png')
+            iconEl.setAttribute('src', 'https://openweathermap.org/img/wn/' + iconURL + '@2x.png')
             cityNameEl.appendChild(iconEl);
             currentTempEl.textContent = 'Temp: ' + data.main.temp + '\xB0F';
             currentWindEl.textContent = 'Wind: ' + data.wind.speed + ' MPH';
@@ -60,6 +61,7 @@ var getWeatherData = function(city) {
                     } else {
                         currentUVEl.style.backgroundColor = 'purple';
                     };
+                    fiveDayHeaderEl.textContent = '5 Day Forecast:';
                     fiveDay.innerHTML = '';
                     for (let i = 1; i <= 5; i++) {
                         let cardEl = document.createElement('ul');
@@ -71,7 +73,7 @@ var getWeatherData = function(city) {
 
                         let iconEl = document.createElement('img');
                         let iconCode = data.daily[i].weather[0].icon;
-                        iconEl.setAttribute('src', `http://openweathermap.org/img/wn/${iconCode}@2x.png`)
+                        iconEl.setAttribute('src', `https://openweathermap.org/img/wn/${iconCode}@2x.png`)
                         cardEl.appendChild(iconEl);
 
                         let tempEl = document.createElement('li');
@@ -118,5 +120,3 @@ submitBtn.addEventListener('click', function() {
     inputEl.value = '';
     
 })
-
-console.log(citiesArray.includes('Taos'));
