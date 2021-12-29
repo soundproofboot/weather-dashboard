@@ -45,6 +45,28 @@ var getWeatherData = function(city) {
                     } else {
                         currentUVEl.style.backgroundColor = 'purple';
                     };
+                    let cardOneEl = document.querySelector('#day-one');
+                    
+                    let dateEl = document.createElement('li');
+                    dateEl.textContent = 'DATE';
+                    cardOneEl.appendChild(dateEl);
+
+                    let iconEl = document.createElement('img');
+                    let iconCode = data.daily[1].weather[0].icon;
+                    iconEl.setAttribute('src', `http://openweathermap.org/img/wn/${iconCode}@2x.png`)
+                    cardOneEl.appendChild(iconEl);
+
+                    let tempEl = document.createElement('li');
+                    tempEl.textContent = 'Temp: ' + data.daily[1].temp.day + '\xB0F';
+                    cardOneEl.appendChild(tempEl);
+
+                    let windEl = document.createElement('li');
+                    windEl.textContent = 'Wind: ' + data.daily[1].wind_speed + 'MPH';
+                    cardOneEl.appendChild(windEl);
+
+                    let humidityEl = document.createElement('li');
+                    humidityEl.textContent = 'Humidity: ' + data.daily[1].humidity + ' %';
+                    cardOneEl.appendChild(humidityEl);
                 })
             })
         })
