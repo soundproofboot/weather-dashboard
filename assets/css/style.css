@@ -13,3 +13,7 @@ img {
     margin: 0;
     background-color:rgb(163, 168, 245)
 }
+
+.current-stats {
+    list-style-type: none;
+}

@@ -28,8 +28,11 @@ var getWeatherData = function(city) {
         .then(function(data) {
             console.log(data);
             cityNameEl.textContent = data.name + ` (${currentDate})`;
-            cityButtonMaker(data.name);
-            
+            if (!citiesArray.includes(data.name)) {
+                citiesArray.push(data.name);
+                localStorage.setItem('cities', JSON.stringify(citiesArray));
+                cityButtonMaker(data.name);
+            }
             let iconURL = data.weather[0].icon
             let iconEl = document.createElement('img');
             iconEl.setAttribute('src', 'http://openweathermap.org/img/wn/' + iconURL + '@2x.png')
@@ -111,9 +114,9 @@ submitBtn.addEventListener('click', function() {
     event.preventDefault();
     fiveDay.innerHTML = '';
     getWeatherData(inputEl.value);
-    citiesArray.push(inputEl.value);
-    localStorage.setItem('cities', JSON.stringify(citiesArray));
+    
     inputEl.value = '';
     
 })
 
+console.log(citiesArray.includes('Taos'));
