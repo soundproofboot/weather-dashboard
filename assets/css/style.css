@@ -17,3 +17,8 @@ img {
 .current-stats {
     list-style-type: none;
 }
+
+.container {
+    display: grid;
+    grid-template-columns: 25% 75%;
+}

@@ -29,7 +29,7 @@ var getWeatherData = function(city) {
         .then(function(data) {
             console.log(data);
             if (data.message === 'city not found' || data.message === 'Nothing to geocode') {
-                window.alert('Please enter a valid city');
+                fiveDay.textContent = 'Please enter a valid city';
             } else {
                 cityNameEl.textContent = data.name + ` (${currentDate})`;
             if (!citiesArray.includes(data.name)) {
