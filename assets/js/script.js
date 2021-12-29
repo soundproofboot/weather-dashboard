@@ -28,7 +28,10 @@ var getWeatherData = function(city) {
         response.json()
         .then(function(data) {
             console.log(data);
-            cityNameEl.textContent = data.name + ` (${currentDate})`;
+            if (data.message === 'city not found' || data.message === 'Nothing to geocode') {
+                window.alert('Please enter a valid city');
+            } else {
+                cityNameEl.textContent = data.name + ` (${currentDate})`;
             if (!citiesArray.includes(data.name)) {
                 citiesArray.push(data.name);
                 localStorage.setItem('cities', JSON.stringify(citiesArray));
@@ -91,7 +94,9 @@ var getWeatherData = function(city) {
                     }
                 })
             })
-        })
+        }
+      }
+     )
     })
 };
 
@@ -116,7 +121,6 @@ submitBtn.addEventListener('click', function() {
     event.preventDefault();
     fiveDay.innerHTML = '';
     getWeatherData(inputEl.value);
-    
     inputEl.value = '';
     
 })
