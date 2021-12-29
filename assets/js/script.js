@@ -1,19 +1,25 @@
 // select html elements
 let inputEl = document.querySelector('#city-input')
 let submitBtn = document.querySelector('#submit-button');
+
+let weatherDataEl = document.querySelector('.weather-data')
 let cityNameEl = document.querySelector('#city-name')
 let currentTempEl = document.querySelector('#temp')
 let currentWindEl = document.querySelector('#wind')
 let currentHumidityEl = document.querySelector('#humidity')
 let currentUVEl = document.querySelector('#uv');
 let fiveDay = document.querySelector('.five-day');
-
+let searchHistoryEl = document.querySelector('.search-history');
 
 let currentDate = moment().format('l');
 let baseURL = 'http://api.openweathermap.org/data/2.5/weather?appid=8bfd6df7338458aeaebd48fdcb483a00&units=imperial&q=';
 let fiveDayURL = ''
 
-console.log();
+if (!localStorage.cities) {
+    localStorage.setItem('cities', JSON.stringify([]));
+};
+
+let citiesArray = JSON.parse(localStorage.getItem('cities'));
 
 var getWeatherData = function(city) {
     fetch(baseURL + city)
@@ -22,6 +28,8 @@ var getWeatherData = function(city) {
         .then(function(data) {
             console.log(data);
             cityNameEl.textContent = data.name + ` (${currentDate})`;
+            cityButtonMaker(data.name);
+            
             let iconURL = data.weather[0].icon
             let iconEl = document.createElement('img');
             iconEl.setAttribute('src', 'http://openweathermap.org/img/wn/' + iconURL + '@2x.png')
@@ -49,9 +57,10 @@ var getWeatherData = function(city) {
                     } else {
                         currentUVEl.style.backgroundColor = 'purple';
                     };
-
+                    fiveDay.innerHTML = '';
                     for (let i = 1; i <= 5; i++) {
                         let cardEl = document.createElement('ul');
+                        cardEl.classList.add('day');
                         
                         let dateEl = document.createElement('li');
                         dateEl.textContent = moment().add(i, 'day').format('l');
@@ -81,9 +90,30 @@ var getWeatherData = function(city) {
     })
 };
 
+var cityButtonMaker = function(city) {
+    let newButton = document.createElement('button');
+    newButton.textContent = city;
+    searchHistoryEl.appendChild(newButton);
+    newButton.addEventListener('click', function() {
+        getWeatherData(city);
+    });
+}
+
+var displayHistory = function(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        cityButtonMaker(arr[i]);
+    }
+}
+
+displayHistory(citiesArray);
+
 submitBtn.addEventListener('click', function() {
     event.preventDefault();
-    
+    fiveDay.innerHTML = '';
     getWeatherData(inputEl.value);
+    citiesArray.push(inputEl.value);
+    localStorage.setItem('cities', JSON.stringify(citiesArray));
+    inputEl.value = '';
+    
 })
 

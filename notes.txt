@@ -52,3 +52,5 @@ Icon (data.daily[i].weather[0].icon put into url for png)
 Temp (data.daily[i].temp.day + deg f)
 Wind (data.daily[i].wind_speed + mph)
 Humidity (data.daily[i].humidity + %)
+
+save to local storage
