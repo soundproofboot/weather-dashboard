@@ -67,6 +67,7 @@ input {
     padding: 0px 20px 20px 20px;
     margin-top: 5vh;
     border-radius: 5px;
+    line-height: 2em;
 }
 
 /* special style for uv line to show relative color */
@@ -74,12 +75,13 @@ input {
     width: fit-content;
     padding: 0 10px 0 10px;
     color: white;
+    text-shadow: 1px 1px 2px black;
 }
 
 /* style images received from weather data */
 img {
     height: 2rem;
-    background-color: rgb(10, 4, 66);
+    background-color: rgba(206, 226, 25, 0.671);
     border-radius: 50%;
 }
 
@@ -123,10 +125,23 @@ button {
     background-color:rgb(163, 168, 245);
     border-radius: 5px;
     font-size: 16px;
+    white-space: nowrap;
 }
 
-/* media query to stack vertically on smaller screens */
+/* media query to set two days to a column at medium screens */
 
+@media screen and (max-width: 1000px) {
+    .five-day {
+        grid-template-columns: 50% 50%;
+        width: 90%;
+    }
+
+    .day {
+        width: 80%;
+    }
+}
+
+/* media query to stack all days vertically on small screens */
 @media screen and (max-width: 768px) {
     .container {
         grid-template-columns: 100%;
@@ -145,3 +160,4 @@ button {
         width: 25%;
     }
 }
+
