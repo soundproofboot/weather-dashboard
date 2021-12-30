@@ -111,6 +111,9 @@ var cityButtonMaker = function(city) {
     newButton.textContent = city;
     searchHistoryEl.appendChild(newButton);
     newButton.addEventListener('click', function() {
+        inputEl.value = '';
+        inputEl.setAttribute('placeholder', 'City name')
+        inputEl.style.backgroundColor = '';
         getWeatherData(city);
     });
 }
