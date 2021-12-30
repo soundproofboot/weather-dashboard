@@ -1,6 +1,8 @@
 * {
     font-family: 'Arial';
     box-sizing: content-box;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
@@ -14,6 +16,7 @@ h1 {
 
 .search-panel {
     text-align: center;
+    margin-top: 20px;
 }
 
 img {
@@ -99,6 +102,7 @@ li {
 #uv {
     width: fit-content;
     padding: 0 10px 0 10px;
+    color: white;
 }
 
 @media screen and (max-width: 768px) {
