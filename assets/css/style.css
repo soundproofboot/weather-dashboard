@@ -107,6 +107,8 @@ button {
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
     margin-top: 10px;
+    gap: 1em;
+    line-height: 2em;
 }
 
 #five-day-header {

@@ -44,7 +44,7 @@ var getWeatherData = function(city) {
             // if response does not return valid data
             if (data.message === 'city not found' || data.message === 'Nothing to geocode') {
                 // display error message and hide previous search data, if any
-                cityNameEl.innerHTML = `The city entered was not in the OpenWeather API list. For more info on OpenWeather API please visit <a href='https://openweathermap.org/api'>https://openweathermap.org/api</a>`
+                cityNameEl.innerHTML = `The city entered was not in the OpenWeather API list. For more info on OpenWeather API please visit <a href='https://openweathermap.org/api' target='_blank'>https://openweathermap.org/api</a>`
                 currentStatsEl.style.display = 'none';
                 fiveDayHeaderEl.style.display = 'none';
             } else {
