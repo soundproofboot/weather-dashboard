@@ -54,3 +54,19 @@ Wind (data.daily[i].wind_speed + mph)
 Humidity (data.daily[i].humidity + %)
 
 save to local storage
+
+Notes for styling
+
+overall - font
+
+heading - full width, background color linear gradient, text color white, size appropriately
+
+search for city - bold
+input - border radius, border color? size
+search button - blue background, white text, full width, border radius
+search history div - border top, space between buttons
+history buttons - grey bg, full width
+
+current weather - border, full width of column
+
+5 day - set up grid with 5 columns
