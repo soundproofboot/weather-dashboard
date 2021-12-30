@@ -61,6 +61,7 @@ button {
 .five-day {
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
+    margin-top: 10px;
 }
 
 .day {
@@ -88,7 +89,6 @@ li {
 }
 
 .current-weather {
-    border: solid gray 2px;
     padding: 0px 20px 20px 20px;
     margin-top: 5vh;
     border-radius: 5px;
@@ -105,6 +105,10 @@ li {
     color: white;
 }
 
+#five-day-header {
+    margin-top: 25px;
+}
+
 @media screen and (max-width: 768px) {
     .container {
         grid-template-columns: 100%;
@@ -118,5 +122,8 @@ li {
     .day {
         width: 100%;
         margin: 10px;
+    }
+    button {
+        width: 25%;
     }
 }

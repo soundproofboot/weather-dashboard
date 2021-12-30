@@ -1,9 +1,11 @@
 // select html elements
 let inputEl = document.querySelector('#city-input')
 let submitBtn = document.querySelector('#submit-button');
+let formEl = document.querySelector('form');
 
 let weatherDataEl = document.querySelector('.weather-data')
-let cityNameEl = document.querySelector('#city-name')
+let cityNameEl = document.querySelector('#city-name');
+let currentStatsEl = document.querySelector('.current-stats');
 let currentTempEl = document.querySelector('#temp')
 let currentWindEl = document.querySelector('#wind')
 let currentHumidityEl = document.querySelector('#humidity')
@@ -29,10 +31,14 @@ var getWeatherData = function(city) {
         .then(function(data) {
             console.log(data);
             if (data.message === 'city not found' || data.message === 'Nothing to geocode') {
-                fiveDay.textContent = 'Please enter a valid city';
+                cityNameEl.innerHTML = `The city entered was not in the OpenWeather API list. For more info on OpenWeather API please visit <a href='https://openweathermap.org/api'>https://openweathermap.org/api</a>`
+                currentStatsEl.style.display = 'none';
+                fiveDayHeaderEl.style.display = 'none';
             } else {
+                currentStatsEl.style.display = 'block';
+                fiveDayHeaderEl.style.display = 'block';
                 cityNameEl.textContent = data.name + ` (${currentDate})`;
-            if (!citiesArray.includes(data.name)) {
+                if (!citiesArray.includes(data.name)) {
                 citiesArray.push(data.name);
                 localStorage.setItem('cities', JSON.stringify(citiesArray));
                 cityButtonMaker(data.name);
@@ -119,8 +125,14 @@ displayHistory(citiesArray);
 
 submitBtn.addEventListener('click', function() {
     event.preventDefault();
-    fiveDay.innerHTML = '';
-    getWeatherData(inputEl.value);
-    inputEl.value = '';
-    
+    if (inputEl.value === '') {
+        inputEl.setAttribute('placeholder', 'Please enter a city');
+        inputEl.style.backgroundColor = 'pink';
+    } else {
+        fiveDay.innerHTML = '';
+        getWeatherData(inputEl.value);
+        inputEl.value = '';
+        inputEl.setAttribute('placeholder', 'City name')
+        inputEl.style.backgroundColor = '';
+    }    
 })
