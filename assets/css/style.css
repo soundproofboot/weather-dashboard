@@ -1,3 +1,4 @@
+/* universal selector */
 * {
     font-family: 'Arial';
     box-sizing: content-box;
@@ -5,6 +6,13 @@
     padding: 0;
 }
 
+/* grid set up to make two panes on wide screens */
+.container {
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+/* heading */
 h1 {
     text-align: center;
     margin-top: 0;
@@ -14,13 +22,10 @@ h1 {
     color: white;
 }
 
+/* search area */
 .search-panel {
     text-align: center;
     margin-top: 20px;
-}
-
-img {
-    height: 2rem;
 }
 
 form {
@@ -46,6 +51,50 @@ input {
     margin: 0 auto;
 }
 
+/* weather data pane */
+.weather-data {
+    width: 85%;
+    margin: 0 auto;
+}
+
+/* current weather section */
+.current-stats {
+    list-style-type: none;
+    font-size: 20px;
+}
+
+.current-weather {
+    padding: 0px 20px 20px 20px;
+    margin-top: 5vh;
+    border-radius: 5px;
+}
+
+/* special style for uv line to show relative color */
+#uv {
+    width: fit-content;
+    padding: 0 10px 0 10px;
+    color: white;
+}
+
+/* style images received from weather data */
+img {
+    height: 2rem;
+    background-color: rgb(10, 4, 66);
+    border-radius: 50%;
+}
+
+/* unstyle list elements */
+li {
+    margin-left: 0;
+    display: block;
+}
+
+/* previous searches area */
+.search-history {
+    border-top: 2px gray solid;
+    text-align: center;
+}
+
 button {
     width: 90%;
     margin: 10px;
@@ -53,17 +102,18 @@ button {
     font-size: 20px;
 }
 
-.search-history {
-    border-top: 2px gray solid;
-    text-align: center;
-}
-
+/* Five day forecast */
 .five-day {
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
     margin-top: 10px;
 }
 
+#five-day-header {
+    margin-top: 25px;
+}
+
+/* each card in 5 day */
 .day {
     list-style-type: none;
     padding: 10px;
@@ -73,41 +123,7 @@ button {
     font-size: 16px;
 }
 
-.current-stats {
-    list-style-type: none;
-    font-size: 20px;
-}
-
-.container {
-    display: grid;
-    grid-template-columns: 25% 75%;
-}
-
-li {
-    margin-left: 0;
-    display: block;
-}
-
-.current-weather {
-    padding: 0px 20px 20px 20px;
-    margin-top: 5vh;
-    border-radius: 5px;
-}
-
-.weather-data {
-    width: 85%;
-    margin: 0 auto;
-}
-
-#uv {
-    width: fit-content;
-    padding: 0 10px 0 10px;
-    color: white;
-}
-
-#five-day-header {
-    margin-top: 25px;
-}
+/* media query to stack vertically on smaller screens */
 
 @media screen and (max-width: 768px) {
     .container {

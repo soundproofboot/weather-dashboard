@@ -8,10 +8,13 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <!-- headding -->
     <header>
         <h1>Weather Dashboard</h1>
     </header>
+    <!-- main section in two columns on wide screen -->
     <main class='container'>
+        <!-- input for city and search button to fetch results -->
         <section class="search-panel">
             <h2>Search for a City:</h2>
             <form action="submit">
@@ -19,11 +22,14 @@
                 <input type="submit" id="submit-button" value='Search'>
             </form>
 
+            <!-- buttons for each city searched in history -->
             <div class="search-history">
                 
             </div>
         </section>
+        <!-- data for city searched -->
         <section class="weather-data">
+            <!-- data from first 'current weather' api call -->
             <div class="current-weather">
                 <h2 id="city-name"></h2>
                 <div class="current-stats">
@@ -34,15 +40,16 @@
                 </div>
             </div>
             <h3 id='five-day-header'></h3>
+            <!-- data from one call api -->
             <div class="five-day">
-                
+
             </div>
         </section>
     </main>
 
     
 
-    
+    <!-- moment cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="assets/js/script.js"></script>
 </body>
