@@ -85,7 +85,7 @@ img {
     border-radius: 50%;
 }
 
-/* unstyle list elements */
+/* unstyle default for list elements */
 li {
     margin-left: 0;
     display: block;
@@ -95,6 +95,7 @@ li {
 .search-history {
     border-top: 2px gray solid;
     text-align: center;
+    padding-top: 10px;
 }
 
 button {
@@ -128,11 +129,11 @@ button {
     white-space: nowrap;
 }
 
-/* media query to set two days to a column at medium screens */
+/* media query to stack five day forecast on smaller screens */
 
 @media screen and (max-width: 1000px) {
     .five-day {
-        grid-template-columns: 50% 50%;
+        grid-template-columns: 100%;
         width: 90%;
     }
 
@@ -141,7 +142,7 @@ button {
     }
 }
 
-/* media query to stack all days vertically on small screens */
+/* media query to stack everything vertically on small screens */
 @media screen and (max-width: 768px) {
     .container {
         grid-template-columns: 100%;
